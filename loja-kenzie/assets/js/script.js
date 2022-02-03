@@ -1,12 +1,6 @@
 const vitrinePrincipal = document.querySelector(".vitrineProdutos__vitrine.vitrinePrincipal")
 const vitrineCarrinho = document.querySelector(".vitrineProdutos__vitrine.vitrineCarrinho")
 
-//CRIAR O CARD DE PRODUTO
-    //A) Produto 
-    //B) Informações
-    //C) Montar o card de produto 
-    //D) Retornar esse card para mostrar na tela
-
 //FUNÇÃO MONTAR O CARD DE PRODUTO
 const cardProduto = ({id,produtoNome,imageUrl,preco,precoPromocional,oferta,estoque}) => {
     
@@ -43,48 +37,33 @@ const cardProduto = ({id,produtoNome,imageUrl,preco,precoPromocional,oferta,esto
     return li
 } 
 
-
-
-//MOSTRAR NA VITRINE
-//A) BASE COM TODOS OS PRODUTOS
-//B) Fazer um loop percorrer os produtos
-//C) Card de produto 
-//D) Vitrine para mostrar o produto
-
 //FUNÇÃO QUE LISTA OS PRODUTOS
 const listarProdutos = (arrayProdutos, callbackCardProduto, vitrine) => {
-    
-    //PERCORRENDO DATA BASE DE PRODUTOS
-        // arrayProdutos.forEach((produto)=>{
-            
-        //     //MONTANDO CARD PARA CADA PRODUTO
-        //     const card = callbackCardProduto(produto)
-
-        //     //COLOCANDO PRODUTO DA VITRINE
-        //     vitrine.appendChild(card)
-
-        // })
+   
+    //LIMPAR A INTERFACE 
+    vitrine.innerHTML = ""
 
     //PERCORRENDO DATA BASE DE PRODUTOS
-    for(let i = 0; i < arrayProdutos.length; i++){
+    arrayProdutos.forEach((produto)=>{
+        
         //MONTANDO CARD PARA CADA PRODUTO
-        const card = callbackCardProduto(arrayProdutos[i])
+        const card = callbackCardProduto(produto)
 
         //COLOCANDO PRODUTO DA VITRINE
         vitrine.appendChild(card)
-    }
+
+    })
+
 }
 //CHAMANDO FUNÇÃO, PASSANDO OS ARGUMENTOS NECESSÁRIO PARA LISTAR OS PRODUTOS NA TELA
 listarProdutos(dataProdutos, cardProduto, vitrinePrincipal)
 
 
-
-
 //ADICIONANDO ESCUTADOR DE EVENTOS
-vitrinePrincipal.addEventListener("click", adicionarProdutoCarrinho)
+vitrinePrincipal.addEventListener("click", interceptarEvento)
 
 //CHAMANDO MINHA CALLBACK PARA ADICIONAR PRODUTO NO CARRINHO
-function adicionarProdutoCarrinho(event){
+function interceptarEvento(event){
  
     //BOTÃO QUE FOI CLICADO
     const btnComprar  = event.target
@@ -92,20 +71,96 @@ function adicionarProdutoCarrinho(event){
     //IDENTIFICO O NOME DO BOTÃO
     if(btnComprar.tagName == "BUTTON"){
 
+        //INDENTIFICANDO ID PRODUTO
+        const idProduto  = btnComprar.id
 
-        //PEGAR O PAI DO BUTTON
-        //btnComprar.parentElement
-        //PRODUTO 
-        const cardProduto = btnComprar.closest("li")
+        //ADICIONANDO PRODUTO NO CARRINHO / PEGANDO O RETORNO TRUE OU FALSE
+        const status  = carrinho.adicionarProduto(idProduto)
 
-        //CLONANDO PRODUTO DA VITRINE
-        const cardProdutoClone = cardProduto.cloneNode(true)
+        if(status === true){
+            
+            listarProdutos(carrinho.produtos, cardProduto, vitrineCarrinho)
 
-        //ADICIONANDO PRODUTO NO CARRINHO
-        vitrineCarrinho.appendChild(cardProdutoClone)
+        }
+        
     }
 
 }
+
+//ADICIONANDO ESCUTADOR DE EVENTOS NO CARRINHO
+vitrineCarrinho.addEventListener("click", interceptarEventoCarrinho)
+function interceptarEventoCarrinho(event){
+    //BOTÃO QUE FOI CLICADO
+    const btnComprar  = event.target
+    
+    //IDENTIFICO O NOME DO BOTÃO
+    if(btnComprar.tagName == "BUTTON"){
+
+        //INDENTIFICANDO ID PRODUTO
+        const idProduto  = btnComprar.id
+
+        //ADICIONANDO PRODUTO NO CARRINHO / PEGANDO O RETORNO TRUE OU FALSE
+        
+        const status  = carrinho.removerProduto(idProduto)
+
+        if(status === true){
+            
+            listarProdutos(carrinho.produtos, cardProduto, vitrineCarrinho)
+
+        }
+        
+    }
+}
+
+//CARRINHO
+const carrinho = {
+    produtos: [],
+    precoTotal:0,
+    qtdProdutos:0,
+
+    adicionarProduto(idProduto){
+        
+        //2) REALIZAR PESQUISA NA BASE
+        //3) VERIFICAR SE ESSE PRODUTO TRUE 
+       const produto =  dataProdutos.find((produto) => produto.id == idProduto)
+
+       //ACESSANDO PROPRIEDADE PRODUTOS/ADICIONANDO PRODUTO
+       if(produto.estoque > 0){
+        this.produtos.push(produto)
+        this.qtdProdutos = this.produtos.length
+        
+        return true
+        
+       }
+
+    },
+    removerProduto(idProduto){
+
+        //2) REALIZAR PESQUISA NA BASE
+        //3) VERIFICAR SE ESSE PRODUTO TRUE 
+        const produto =  this.produtos.find((produto) => produto.id == idProduto)
+        
+        if(produto){
+            // IDENTIFICAR O PRODUTO DENTRO DO ARRAY 
+            const index   =  this.produtos.indexOf(produto)
+            //FAÇO A REMOÇÃO DE FATO
+            this.produtos.splice(index, 1)
+
+            return true
+        }
+        
+    },
+    removerTodosProduto(){
+       
+    }
+}
+
+
+
+
+
+
+
 
 
 
