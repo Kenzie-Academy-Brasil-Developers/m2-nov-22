@@ -1,55 +1,94 @@
+//NOME
+//IDADE
+//ALTURA
 
-// const buttonsProdutos = document.querySelectorAll(".vitrineProdutos__vitrine.vitrinePrincipal button")
+//AÇÕES 
+//ANDAR 
+//FALAR 
 
-// buttonsProdutos.forEach((btnComprar)=> btnComprar.addEventListener("click", adicionarProdutoCarrinho))
-// //  PRIMEIRA FORMA
-// for(let i = 0; i< buttonsProdutos.length; i++){
-
-
-//     buttonsProdutos[i].addEventListener("click", adicionarProdutoCarrinho)
-
-// }
-
-// //  SEGUNDA FORMA
-// buttonsProdutos.forEach(function(btnComprar){
-    
-//     btnComprar.addEventListener("click", adicionarProdutoCarrinho)
-// })
-
-
-//  TERCEIRA FORMA
-//SELECIONANDO VITRINE DE PRODUTOS
-const vitrinePrincipal = document.querySelector(".vitrineProdutos__vitrine.vitrinePrincipal")
-const vitrineCarrinho = document.querySelector(".vitrineProdutos__vitrine.vitrineCarrinho")
-
-
-//ADICIONANDO ESCUTADOR DE EVENTOS
-vitrinePrincipal.addEventListener("click", adicionarProdutoCarrinho)
-
-//CHAMANDO MINHA CALLBACK PARA ADICIONAR PRODUTO NO CARRINHO
-function adicionarProdutoCarrinho(event){
- 
-    //BOTÃO QUE FOI CLICADO
-    const btnComprar  = event.target
-    
-    //IDENTIFICO O NOME DO BOTÃO
-    if(btnComprar.tagName == "BUTTON"){
-
-
-        //PEGAR O PAI DO BUTTON
-        //btnComprar.parentElement
-        //PRODUTO 
-        const cardProduto = btnComprar.closest("li")
-
-        //CLONANDO PRODUTO DA VITRINE
-        const cardProdutoClone = cardProduto.cloneNode(true)
-
-        //ADICIONANDO PRODUTO NO CARRINHO
-        vitrineCarrinho.appendChild(cardProdutoClone)
-    }
-
+const pessoa = {
+    nome: "Hudson",
+    idade:25,
+    altura:1.80,
 }
 
+
+const aluno = {
+    nome: "João",
+    idade:25,
+    altura:1.80,
+    curso: "Front-end",
+    modulos: ["M1","M2","M3"]
+}
+
+const jogador = {
+    nome: "Hudson",
+    posicao: {x:0, y:0}
+}
+
+const div = document.createElement("div")
+console.dir(div)
+
+div.innerText = "Texto"
+
+div.classList.add()
+
+
+
+
+
+
+
+const hudson = {
+    nome: "Hudson",
+    sobrenome:"Carolino",
+    idade:25,
+    altura:1.80,
+    conatos: [
+        {email:"hudson@gmail.com"},
+        {telefone:"419999999"},
+    ],
+
+    apresentar(){
+
+        //console.log(`Meu nome é ${this.nome}`)
+
+    },
+    nomeCompleto(){
+       // console.log(`Meu nome é ${this.nome} ${this.sobrenome}`)
+        console.log(this)
+    }
+
+    
+}
+
+// hudson.apresentar()
+ //hudson.nomeCompleto()
+
+
+//OBJETO STRING
+const string = {
+    valor: "Hudson",
+
+    toLocaleLowerCase(){
+
+        //LÓGICA
+        
+        return this
+    },
+
+    toUpperCase(){
+        //LÓGICA
+
+        return this
+    },
+
+    split(){
+         //LÓGICA
+
+         return this
+    }
+}
 
 
 
