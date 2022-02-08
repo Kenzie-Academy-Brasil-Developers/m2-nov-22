@@ -134,6 +134,13 @@ document.querySelector("#filtroPreco").addEventListener("click", function(event)
 
 })
 
+document.querySelector("#mostrarTodos").addEventListener("click", function(event){
+    event.preventDefault()
+
+    vitrine.listar(dataProdutos,vitrinePrincipal)
+
+})
+
 
 
 

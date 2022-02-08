@@ -42,20 +42,22 @@ const vitrine = {
 
     filtroPreco(){
 
+        let produtosFiltrados = [...dataProdutos]
+
         if(this.statusFiltro === false){
             
-            dataProdutos.sort((a,b) => Number(b.preco) - Number(a.preco))
+            produtosFiltrados.sort((a,b) => Number(b.preco) - Number(a.preco))
             this.statusFiltro = true        
         
        
         }else{
 
-            dataProdutos.sort((a,b) => Number(a.preco) - Number(b.preco))
+            produtosFiltrados.sort((a,b) => Number(a.preco) - Number(b.preco))
             this.statusFiltro = false 
         
         }
         
-        this.listar(dataProdutos, vitrinePrincipal)
+        this.listar(produtosFiltrados, vitrinePrincipal)
         
     }
 

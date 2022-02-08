@@ -1,94 +1,110 @@
-//NOME
-//IDADE
-//ALTURA
-
-//AÇÕES 
-//ANDAR 
-//FALAR 
-
-const pessoa = {
-    nome: "Hudson",
-    idade:25,
-    altura:1.80,
-}
-
-
-const aluno = {
-    nome: "João",
-    idade:25,
-    altura:1.80,
-    curso: "Front-end",
-    modulos: ["M1","M2","M3"]
-}
-
-const jogador = {
-    nome: "Hudson",
-    posicao: {x:0, y:0}
-}
-
-const div = document.createElement("div")
-console.dir(div)
-
-div.innerText = "Texto"
-
-div.classList.add()
-
-
-
-
-
-
-
+//OBJETO
 const hudson = {
-    nome: "Hudson",
+    nome:"Hudson",
+    sobrenome:"Carolino"
+}
+
+//CRIANDO UM NOVO OBJETO => PESSOA 
+const pessoa = {...hudson, idade: 25}
+
+//EDITANDO UMA PROPRIEDADE
+const {nome:nomePessoa ,sobrenome,idade} = pessoa
+
+///
+const infoEmpresa = {
+    nome:"Kenzie Academy",
+    cnpj:"129.231.23.45",
+    funcao:"Instrutor"
+}
+
+//
+const PessoaInstrutor = {
+    empresa: {...infoEmpresa},
+    nome:"Hudson",
     sobrenome:"Carolino",
-    idade:25,
-    altura:1.80,
-    conatos: [
-        {email:"hudson@gmail.com"},
-        {telefone:"419999999"},
-    ],
-
-    apresentar(){
-
-        //console.log(`Meu nome é ${this.nome}`)
-
-    },
-    nomeCompleto(){
-       // console.log(`Meu nome é ${this.nome} ${this.sobrenome}`)
-        console.log(this)
-    }
-
-    
+    idade:25
 }
 
-// hudson.apresentar()
- //hudson.nomeCompleto()
+//
+const {
+        nome,
+        sobrenome:sobrenomeInstrutor, 
+        empresa:{nomeEmpresa, cnpj, funcao }
+
+    } = PessoaInstrutor
+
+//****************** *//
+        //ARRAY
+//****************** *//
+
+let nomes = ["Hudson", "Maria", "Pedro", "Daniel"]
+
+//PEGANDO TODOS
+let [nome1,nome2 , nome3, nome4] = nomes
+
+//PULANDO VALORES
+//let [, , nome3, nome4] = nomes
+
+//
+const coordenadas = ["-55", "20", 200]
+
+const [lat = 0, long = 0, distancia = 0] = coordenadas
+
+//FAZNEDO PUSH 
+const arrayNUmeros      = [675,1,2,3,4,545,65,1000,435,65]
+
+const novoArrayNumeros  = [...arrayNUmeros]
+
+//console.log(arrayNUmeros)
+//console.log(novoArrayNumeros.sort((a,b)=> a-b))
+
+//FUNCIONARIO PARA CADASTRAR
+const jose = {
+    nome:"José",
+    sobrenome:"Silva",
+    cargo:"facilitador"
+}
+
+const hudsonInstrutor = {
+    nome:"Hudson",
+    sobrenome:"Carolino",
+    cargo:"instrutor"
+}
+
+const maria = {
+    nome:"Maria",
+    sobrenome:"Porcina",
+    cargo:"coach"
+}
 
 
-//OBJETO STRING
-const string = {
-    valor: "Hudson",
+//APLICAÇÃO DE CADASTRO
+const cadastroFuncionario = {
+    fucnionarios: [],
+    salarios:{facilitador:2000, coach:2500, instrutor:3000},
 
-    toLocaleLowerCase(){
-
-        //LÓGICA
+    cadastrarFuncionario(funcionario){
+        const {cargo} = funcionario
         
-        return this
-    },
 
-    toUpperCase(){
-        //LÓGICA
+        this.fucnionarios = [{
+            ...funcionario, 
 
-        return this
-    },
+            salario:this.salarios[cargo]
+        }, ...this.fucnionarios]
 
-    split(){
-         //LÓGICA
 
-         return this
     }
+
 }
+cadastroFuncionario.cadastrarFuncionario(jose)
+cadastroFuncionario.cadastrarFuncionario(hudsonInstrutor)
+cadastroFuncionario.cadastrarFuncionario(maria)
+console.log(cadastroFuncionario.fucnionarios)
+
+
+
+
 
 
 
