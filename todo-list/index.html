@@ -23,8 +23,9 @@
 
     <main>
         <div class="container">
-            <form>
-                <input type="text" name="titulo" placeholder="Título da tarefa">
+           
+            <form id="formTodo">
+                <input type="text" name="nome" placeholder="Título da tarefa">
                 <textarea name="descricao" placeholder="Descrição da tarefa"></textarea>
                 <button>Adicionar</button>
             </form>
@@ -35,35 +36,18 @@
                     <button id="buttonMostrarFinalizadas">Mostrar Finalizadas</button>
                 </div>
                 
-                <ul>
-                    <li>
-                        <span>
-                            <i data-feather="x-circle"></i>
-                        </span>
-                        <label>
-                            <h2>Entrega reproduzindo métodos</h2>
-                            <p>Finalizar metodos reduce, filter e find da entrega reproduzindo métodos</p>
-                        </label>
-                    </li>
-                    <li>
-                        <span>
-                            <i data-feather="x-circle"></i>
-                        </span>
-                        <label>
-                            <h2>Entrega reproduzindo métodos</h2>
-                            <p>Finalizar metodos reduce, filter e find da entrega reproduzindo métodos</p>
-                        </label>
-                    </li>
-                </ul>
+                <ul class="tagLista"></ul>
+
             </section>
         </div>
     </main>
 
   
     <script type="text/javascript" src="./assets/js/todoList/index.js"></script>
+    <script type="text/javascript" src="./assets/js/interface/index.js"></script>
     <script type="text/javascript" src="./assets/js/script.js"></script>
     <script>
         feather.replace()
-      </script>
+    </script>
 </body>
 </html>

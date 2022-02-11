@@ -15,12 +15,6 @@
 // DESCRIÇÃO 
 // STATUS 
 
-const todo = {
-    nome:"Entrega reproduzindo métodos",
-    descricao:"Finalizar metodos reduce, filter e find da entrega reproduzindo métodos",
-    status:false,
-}
-
 const todoList  = {
     
     listaTodo: [],
@@ -28,7 +22,7 @@ const todoList  = {
     adicionarTodo(todo){
         
         const newId = this.gerarId()
-        this.listaTodo.push({...todo, id:newId})
+        this.listaTodo.push({...todo, id:newId, status:false})
         
         return true 
     },
@@ -74,7 +68,5 @@ const todoList  = {
     }
     
 }
-
-todoList.adicionarTodo(todo)
 
 
