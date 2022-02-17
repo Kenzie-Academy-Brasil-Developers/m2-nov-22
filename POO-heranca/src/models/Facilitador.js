@@ -1,6 +1,6 @@
 import { Funcionario } from "./Funcionario.js";
 
-const Instrutor = class Instrutor extends Funcionario {
+const Facilitador = class Facilitador extends Funcionario {
    
     constructor(nome, sobrenome, email, datanascimento, cpf, cargo){
         super(nome, sobrenome, email, datanascimento, cpf)
@@ -18,19 +18,19 @@ const Instrutor = class Instrutor extends Funcionario {
     //@OVERRIDING
     getStatus(){
         if(this._status === true){
-            console.log(`${this.nome} - Instrutor ativo`)
+            console.log(`${this.nome} - Facilitador ativo`)
         }else{
-            console.log(`${this.nome} - Instrutor Inativo`)
+            console.log(`${this.nome} - Facilitador Inativo`)
         }
     }
 
-    nomeCompletoInstrutor(){
+    nomeCompletoFacilitador(){
 
         const nomecompleto = super.nomeCompleto()
         
-        console.log(nomecompleto + "- Instrutor")
+        console.log(nomecompleto + "- Facilitador")
     }
 
 }
 
-export {Instrutor}
+export {Facilitador}
