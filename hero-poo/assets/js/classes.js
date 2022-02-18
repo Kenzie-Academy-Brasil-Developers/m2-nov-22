@@ -26,8 +26,6 @@ class Hero {
         if (typeof value === 'string') {
             this._name = value;
         }
-
-        this._name = 'Batata';
     }
 
     get energy() {
@@ -57,6 +55,8 @@ class Hero {
                 adversery.energy -= 10;
 
                 return `${this.name} ganhou a luta`;
+            } else if (this.energy === adversery.energy) {
+                return 'UNIAO';
             }
 
             adversery.energy -= 5;

@@ -55,16 +55,13 @@ const createHero = (evt) => {
     }
 
     const validatedHero = validateData(heroValues);
-    console.log(validatedHero);
 
     if (validatedHero.validData) {
         const { name, power, energy, age } = heroValues;
         let newHero = new Hero(name, power, energy, age);
-        console.log(newHero);
+
         return newHero;
     }
-
-    return false;
 };
 
 form.addEventListener('submit', createHero);
