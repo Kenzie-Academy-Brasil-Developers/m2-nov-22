@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./public/style.css">
+    <title>Controle de cobranças</title>
+</head>
+<body>
+    
+    <header>
+        <div class="app__logo">
+            <h1>Kenzie Cobranças</h1>
+        </div>
+        <div class="app__saldo">
+            <p><i data-feather="dollar-sign"></i><strong>Saldo Diponível</strong> </p>
+            <span>R$ 300,00</span>
+        </div>
+    </header>
+
+    <main class="app">
+
+        <div class="col">
+            <aside class="app__navegacao">
+                <nav>
+                    <ul>
+                        <li>
+                            <button>
+                                <i data-feather="home"></i> 
+                                <span>Página inicial</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button>
+                                <i data-feather="trello"></i> 
+                                <span>Extrato</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="menuCobrancas">
+                                <i data-feather="tag"></i> 
+                                <span>Cobranças</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="menuClientes">
+                                <i data-feather="users"></i> 
+                                <span>Clientes</span>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+        </div>
+
+        <div class="col">
+            
+            <section class="app__busca">
+                <form action="#">
+                    <input type="text" placeholder="Pesquise cobranças pelo no do cliente">
+                    <button>Buscar</button>
+                </form>
+            </section>
+
+            <section class="app__listaCobrancas">
+            
+                <header class="app__cabecalho">
+                    <div class="app__status header">
+                        <p>Status</p>
+                    </div>
+                    <div class="app__cliente header">
+                        <p>Cliente</p>
+                    </div>
+                    <div class="app__descricao header">
+                        <p>Descrição</p>
+                    </div>
+                    <div class="app__valor header">
+                        <p>Valor</p>
+                    </div>
+                    <div class="app__dataEmissao header">
+                    <p>Data de emissão</p>
+                    </div>
+                </header>
+
+                <ul class="app__cobrancas">
+                    <li>
+                        <div>
+                            <i data-feather="check-circle"></i> 
+                        </div>
+                        <div>
+                            <h2>Pedro</h2>
+                        </div>
+                        <div>
+                            <p>Hospedagem</p>
+                        </div>
+                        <div>
+                            <p>R$ 20,00</p>
+                        </div>
+                        <div>
+                            <p>20/02/2022</p>
+                        </div>
+                    </li>
+                    <li class="paga">
+                        <div>
+                            <i data-feather="check-circle"></i> 
+                        </div>
+                        <div>
+                            <h2>Pedro</h2>
+                        </div>
+                        <div>
+                            <p>Hospedagem</p>
+                        </div>
+                        <div>
+                            <p>R$ 20,00</p>
+                        </div>
+                        <div>
+                            <p>20/02/2022</p>
+                        </div>
+                    </li>
+                </ul>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <div class="app__popUp__cliente app__popUp">
+        <span>X</span>
+        <h2>Cadastrar Cliente</h2>
+
+        <form action="#" name="cliente">
+            <label for="nome">Nome Completo</label>
+            <input type="text"name="nome" id="nome" placeholder="Nome Completo">
+            <label for="cpf">CPF</label>
+            <input type="text"id="cpf" name="cpf" placeholder="CPF">
+            <label for="telefone">Telefone</label>
+            <input type="tel" name="telefone" id="telefone" placeholder="Telefone">
+            <button>Cadastrar cliente</button>
+        </form>
+
+    </div>
+
+    <div class="app__popUp__cobranca app__popUp">
+        <span>X</span>
+        <h2>Cadastrar cobrança</h2>
+        
+        <form action="#" name="cobranca">
+            
+            <label for="descricao">Descrição</label>
+            <textarea id="descricao" name="descricao" placeholder="Descrição da cobrança"></textarea>
+           
+            <label for="valor">Valor</label>
+            <input type="number" id="valor" name="valor" placeholder="26,00">
+            <hr>
+            <h2>Escolher cliente</h2>
+
+            <select name="cliente" id="cliente">
+                <option value="Huson">Huson</option>
+            </select>
+            <button>Emitir cobrança</button>
+        </form>
+
+    </div>
+
+    <script type="module" src="./src/app.js"></script>
+    <script type="module" src="./src/controllers/interface.js"></script>
+    <script>
+        feather.replace()
+      </script>
+</body>
+</html>

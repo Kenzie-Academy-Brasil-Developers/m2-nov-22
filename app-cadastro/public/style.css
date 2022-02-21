@@ -1,0 +1,346 @@
+/*
+Theme Name: App
+Theme URI: http://www.hudsoncarolino.com.br
+Author: Hudson Carolino
+Author URI: https://hudsoncarolino.com.br;
+Description: DescriÃ§Ã£o do thema.
+Version: 1.0
+
+--------------------------------------------
+ESTRUTURAÃ‡ÃƒO BASE
+--------------------------------------------
+**** DECLARAÃ‡ÃƒO DE VARIÃVEIS
+**** ESTILOS GERAIS
+**** BODY
+**** HEADER
+**** FOOTER
+**** PÃGINA INICIAL
+**** EXTRAS
+**** @MEDIA
+
+font-family: 'Open Sans', sans-serif;
+font-family: 'Righteous', cursive;
+*/
+
+/* DECLARAÃ‡ÃƒO DE VARIÃVEIS */
+:root{
+    --font-openSans: 'Open Sans';
+    --font-righteous: 'Righteous';
+    --color-azul-primario: #2832dc;
+    --color-azul-secundario: #252aff;
+    --color-verde: #378700;
+
+}
+  
+/* ESTILOS GERAIS */
+html, body, figure, header,img, div, section, article, input, button, textarea, p, h1, h2, h3, h4, h5, h6, ul, li, a,form {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: var(--font-openSans);
+    color: #747474;
+
+}
+body{
+    height: 100vh;
+    background-color: #eaeff6;
+}
+body.scrollStop{
+    overflow: hidden;
+}
+body.scrollStop::before{
+    content: "";
+    display: block;
+    position: fixed;
+    background-color: rgb(0 0 0 / 69%);
+    width: 100%;
+    height: 100vh;
+    z-index: 2;
+    top:0;
+}
+.container-full {
+    width: 100%;
+    padding: 0 30px;
+    max-width: 1496px;
+    margin: 0 auto;
+}
+.container{
+    width: 100%;
+    padding: 0 30px;
+    max-width: 1350px;
+    margin: 0 auto;
+}
+.col ~ .col{
+    width: calc(100% - 345px);
+    padding: 40px;
+    
+}
+form{
+    width: 100%;
+}
+/* HEADER */
+header{
+    background-color: #fff;
+    box-shadow: 0 2px 5px 0 #d5dee8;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+header .app__logo{}
+header .app__logo h1{
+    font-family: var(--font-righteous);
+    background-color: var(--color-azul-primario);
+    color: #fff;
+    max-width: 18%;
+    min-width: 345px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+    font-size: 30px;
+    text-transform: uppercase;
+}
+header .app__saldo{
+    width: 20%;
+    text-align: left;
+    font-size: 15px;
+}
+header .app__saldo p{
+    display: flex;
+    align-items: center;
+}
+.app__saldo svg{
+    width: 13px;
+}
+ 
+ /* PÁGINA INICIAL */
+.app{
+    display: flex;
+    flex-wrap: wrap;
+}
+.app__navegacao{
+    max-width: 18%;
+    min-width: 345px;
+    background-color: #fff;
+    height: 100vh;
+    box-shadow: 0 2px 5px 0 #d5dee8;
+}
+.app__navegacao nav{}
+.app__navegacao ul{
+    padding: 50px 30px;
+}
+.app__navegacao ul li{
+    margin-bottom: 33px;
+    
+    
+}
+.app__navegacao li button{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    background-color: transparent;
+    cursor: pointer;
+}
+.app__navegacao li i{}
+.app__navegacao li span{
+    margin-left: 15px;
+    color: #747474;
+    font-weight: bold;
+    font-size: 14px;
+
+}
+.app__navegacao li:hover span{
+    color: var(--color-azul-primario);
+}
+.app__navegacao li svg{
+    color: #747474;
+}
+.app__navegacao li:hover svg{
+    color: var(--color-azul-primario);
+}
+
+.app__busca{
+    width: 100%;
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px 0 #d5dee8;
+}
+.app__busca form{
+    display: flex;
+    align-items: center;
+}
+.app__busca input{
+    border: solid 1px #ccc;
+    padding: 10px;
+    width: 500px;
+    height: 40px;
+}
+.app__busca button{
+    height: 40px;
+    width: 100px;
+    margin-left: 5px;
+    border-radius: 5px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: var(--color-azul-primario);
+    cursor: pointer;
+}
+
+.app__listaCobrancas{
+    width: 100%;
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px 0 #d5dee8;
+}
+.app__cabecalho{
+    justify-content: flex-start;
+    padding:10px 30px;
+    box-shadow:none;
+    border-bottom:solid 1px #ccc; 
+}
+.app__cabecalho div.header{
+    width: 10%;
+}
+.app__cabecalho div.app__status{}
+.app__cabecalho div.app__cliente{}
+.app__cabecalho div.app__descricao{
+    width: 69%;
+}
+.app__cabecalho div.app__valor{}
+.app__cabecalho div.app__dataEmissao{}
+.app__cabecalho p{}
+
+
+.app__cobrancas{}
+.app__cobrancas li{
+    display: flex;
+    justify-content: flex-start;
+    padding:10px 30px;
+  
+    border-bottom:solid 1px #ccc; 
+}
+.app__cobrancas div{
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #747474;
+
+}
+.app__cobrancas div:nth-child(3){
+    width: 69%;
+}
+.app__cobrancas p{
+    font-size: 13px;
+}
+.app__cobrancas h2{
+    font-size: 13px;
+}
+.app__cobrancas svg{
+    width: 15px;
+    color:rgb(255, 140, 0);
+}
+.app__cobrancas li.paga svg{
+    width: 15px;
+    color:var(--color-verde);
+}
+.app__popUp{
+    position: fixed;
+    transform: translateX(-50%);
+    top: 20%;
+    left: 50%;
+    z-index: 9;
+    background-color: #fff;
+    width: 100%;
+    max-width: 640px;
+    height: 450px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    display: none;
+}
+.app__popUp{}
+.app__popUp.app__popUp__cliente.show{
+    display: block;
+}
+.app__popUp.app__popUp__cobranca.show{
+    display: block;
+}
+.app__popUp span{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    border: solid 2px;
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 26px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.app__popUp label{
+    font-weight: bold;
+    margin: 5px 0;
+    display: block;
+}
+.app__popUp input{
+    display: block;
+    width: 100%;
+    border: solid 1px #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+select{
+    display: block;
+    width: 100%;
+    border: solid 1px #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+.app__popUp textarea{
+    display: block;
+    width: 100%;
+    border: solid 1px #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+.app__popUp h2{
+    text-align: center;
+}
+
+.app__popUp .app__listaClientes{
+    height: 110px;
+    overflow-y: scroll;
+}
+.app__popUp .app__cliente{
+    display: flex;
+    align-items: center;
+}
+.app__popUp .app__cliente input[type="checkbox"]{
+    width: 20px;
+    margin-right: 5px;
+}
+.app__popUp button{
+    background-color:var(--color-verde);
+    height: 40px;
+    border-radius: 5px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0 10px;
+    margin-top:10px
+}
+
+
