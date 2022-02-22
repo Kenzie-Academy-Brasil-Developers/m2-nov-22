@@ -7,8 +7,8 @@ class ClienteControle{
 
         const novoCliente = new Cliente(cliente)
         db.clientes.push(novoCliente)
-        
-        return true
+
+        return db.clientes
     }
 
 }
