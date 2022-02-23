@@ -1,14 +1,19 @@
 import {Cobranca} from "../models/Cobranca.js"
-import {db}      from "./../db/db.js"
+import {BancoDados}      from "./../db/db.js"
 
 class CobrancaControle{
     
     static cadastrarCobranca(cobranca){
 
         const novaCobranca = new Cobranca(cobranca)
-        db.cobrancas.push(novaCobranca)
+        BancoDados.post("cobrancas", novaCobranca)
 
-        return db.cobrancas
+    }
+
+    static pegarCobranca(){
+
+        return BancoDados.get("cobrancas")
+
     }
 
 }

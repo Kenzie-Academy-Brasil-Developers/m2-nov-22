@@ -1,53 +1,77 @@
 import {ClienteControle} from "./../controllers/Cliente.js"
 import {CobrancaControle} from "./../controllers/Cobranca.js"
+
+//CLASSE QUADRO, RESPONSÁVEL POR MANIPULAR OS ELEMENTOS HTML DA PÁGINA. E REALIZAR A AUTALIZAÇÃO DE FORMA VISUAL.
 class Quadro {
-   
+    
+    //PROPROEDADES QUE RECEBEM OS ELEMENTOS HTML, LISTA DE COBRANÇAS E SELECT DE CLIENTES
     static tgSelect = document.getElementById("cliente") 
     static tagLista = document.querySelector(".app__cobrancas")
-    static clientes = []
-    static cobrancas = []
 
+    //MÉTODO STATICO RESPONSÁVEL POR CAPTURAR DADOS DOS FORMULÁRIO
+    //INVOCADO PELO ADDEVENTLISTENER NO ARQUIVO APP
     static capturarDados(event){
         event.preventDefault()
 
+        //RECEBENDO INFORMAÇÕES DO EVENTO
         const nomeFormulario = event.target.name
         const inputs         = event.target
-        const dataForm       = {}
         
+        //CRIANDO OBJETO PARA RECEBER AS INFORMAÇÕES DE FORMA FORMATADA
+        const dataForm       = {}
+
+        //PERCORRENDO OS INPUTS DO FORMULÁRIO 
         for(let i = 0; i< inputs.length;i++){
+
+            //EXTRAINDO PROPRIEADE DE CADA INPUT ENCONTRADO
             const {name, value} = inputs[i]
+            
+            //VERIFICANDO SE EXISTE A PROPRIEDADE NAME
             if(name){
                 dataForm[name] = value
             }
 
+            //LIMPANDO INPUTS
             inputs[i].value = ""
         }
 
+        //VERIFICAÇÃO PARA IDENTIFICAR DE QUAL FORMULÁRIO
         if(nomeFormulario == "cliente"){
             
-            this.clientes = ClienteControle.cadastrarCliente(dataForm)
+            //PASSANDO OBJETO COM AS INFORMAÇÕES PARA FAZER A MODELAGEM E CADASTRO
+            ClienteControle.cadastrarCliente(dataForm)
+
+            //CHAMANDO A FUNÇÃO QUE ATUALIZA O SELECT DE FORMA VISUAL COM O NOVO CLIENTE 
             this.atualizarSelect()
 
         }else{
 
-            this.cobrancas = CobrancaControle.cadastrarCobranca(dataForm)
+            //PASSANDO OBJETO COM AS INFORMAÇÕES PARA FAZER A MODELAGEM E CADASTRO 
+            CobrancaControle.cadastrarCobranca(dataForm)
+            
+             //CHAMANDO A FUNÇÃO TEMPLATE PARA ATUALIZAR DE FORMA VISUAL 
             this.templateCobrancas()
         }
         
     }
 
+    //MÉTODO RESPONSÁVEL POR ATUALZIAR O SELECT DE CLIENTES, DENTRO DO FORMULÁRIO DE COBRANÇAS
     static atualizarSelect(){
-
+      
         this.tgSelect.innerHTML = ""
         
-        this.clientes.forEach((cliente)=>{
+        //RECUPERANDO CLIENTES DO BANCO DE DADOS
+        ClienteControle.pegarClientes().forEach((cliente)=>{
             
+            //EXTRAINDO INFORMAÇÕES DO CLIENTE
             const {nome, id} = cliente
 
+            //CRIANDO TAG OPTION PARA ALIMENTAR O SELECT
             const option     = document.createElement("option")
             option.value     = id
             option.innerText = nome
 
+            //ALIMENTANDO SELECT DE FORM VISUAL
             this.tgSelect.appendChild(option)
         })
     }
@@ -55,13 +79,15 @@ class Quadro {
     static templateCobrancas(){
 
         this.tagLista.innerHTML = ""
-        this.cobrancas.forEach((cobranca)=>{
-            const {status, cliente: clienteId, descricao, valor} = cobranca
+
+        CobrancaControle.pegarCobranca().forEach((cobranca)=>{
+
+            const {status, data, cliente: clienteId, descricao, valor} = cobranca
+        
             const li = document.createElement("li")
-            
 
             //BUSCANDO CLIENTE
-            const clienteCobranca = this.clientes.find((cliente)=>cliente.id == clienteId)
+            const clienteCobranca = ClienteControle.pegarClientes().find((cliente)=>cliente.id == clienteId)
 
             if(status === true){
                 li.classList.add("paga")
@@ -81,14 +107,19 @@ class Quadro {
                     <p>R$ ${valor}</p>
                 </div>
                 <div>
-                    <p>20/02/2022</p>
+                    <p>${data}</p>
                 </div>
             `
             this.tagLista.appendChild(li)
             feather.replace()
         })
 
+    }
 
+    static inicializandoAplicacao(){
+        //INICIALIANDO O SELECT COM CLIENTES/COBRANÇAS JÁ PRÉ CADASTRADOS
+        this.atualizarSelect()
+        this.templateCobrancas()
     }
 }
 
