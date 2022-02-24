@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./public/css/style.css">
+    <title>Lista de Produtos</title>
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <div id="filters" class="filtersContainer">
+
+            <div class="containerBuscaPorNome">
+                
+                <input type="text" placeholder="Nome do produto" class="campoBuscaPorNome">
+                <button class="estiloGeralBotoes estiloGeralBotoes--botaoBuscaPorNome">Buscar</button>
+
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <div class="containerListaProdutos" id="listProdutos">
+            <h2>Todos os produtos</h2>
+            <ul id="vitrinePrincipal"></ul>
+
+            <h2>Hortifruti</h2>
+            <ul id="hortifruti"></ul>
+
+            <h2>Panificadora</h2>
+            <ul id="panificadora"></ul>
+
+            <h2>Laticinio</h2>
+            <ul id="laticinio"></ul>
+
+        </div>
+
+    </main>
+
+
+    <script type="module" src="./src/app.js"></script>
+</body>
+</html>

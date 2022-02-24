@@ -1,0 +1,5 @@
+class Busca{
+    
+}
+
+export{Busca}
