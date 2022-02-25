@@ -14,7 +14,7 @@ class Vitrine {
     }
 
     listarProdutos(parametro = this._produtos){
-       
+        this._idVitrine.innerHTML = ""
         parametro.forEach((produto)=>{
 
             const template = this.templateProduto(produto)
