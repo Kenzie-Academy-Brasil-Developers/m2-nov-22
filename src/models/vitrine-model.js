@@ -22,9 +22,10 @@ export class Vitrine {
             return this.CreateCard(curso)
         }))
     }
-
-    static AddCurso(e){
+    
+    static addCurso(e){
         e.preventDefault()
+
         const inputs = [...e.target]
 
         const curso = {}
@@ -37,5 +38,6 @@ export class Vitrine {
 
         bancoDeCursos.push(curso)
         Vitrine.CreateVitrine(bancoDeCursos)
+        
     }
 }

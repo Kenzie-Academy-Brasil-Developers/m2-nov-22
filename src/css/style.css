@@ -121,6 +121,10 @@ body{
     cursor: pointer;
 }
 
+.containerModal .modal img.imgTest{
+    width: 250px;
+    height: 250px;
+}
 
 form{
     display: flex;
@@ -135,3 +139,9 @@ form input.basicInput{
     width: 90%;
     padding: 5px;
 }
+
+
+.hidden{
+    display: none;
+}
+
