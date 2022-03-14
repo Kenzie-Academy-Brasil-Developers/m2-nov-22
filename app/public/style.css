@@ -1,0 +1,21 @@
+a{
+    padding: 10px;
+    background-color: #7d7d7d;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 10px;
+    display: inline-block;
+}
+
+input,button, select{
+    display: block;
+    border: solid 1px #ccc;
+    height: 40px;
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    outline: none;
+}
