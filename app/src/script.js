@@ -1,14 +1,8 @@
-import { Api } from "./../src/api/Api.js";
-import { Interface } from "./models/Interface.js";
 
+import {Inicial} from "./controllers/paginas/Inicial.js"
+import {Api} from "./api/Api.js"
 
+Api.atualizar("/clientes", 1, {nome: "Hudson Carolino", cpf:"10826604943", telefone:"41997117235"})
 
-
-//CLASS API 
-//API.GET("/CLIENTES") => [{}]
-const clientes = await Api.get("/clientes")
-console.log(clientes)
-
-Interface.listarClientes(clientes)
-
+Inicial.listarClientes()
 

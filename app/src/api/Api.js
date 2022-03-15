@@ -27,9 +27,39 @@ export class Api {
             body:JSON.stringify(data)
 
         })
-        console.log(response.status)
+       
+        return response
+
+    }
+
+    static async delete(path, id){
+       
+        let response = await fetch(`${this.ROTA}${path}/${id}`, {
+            method:"delete",
+        })
+
+        return response
+       
+    }
+
+    //MÉTODO POST/CLIENTES/{}
+    static async atualizar(path, id, data){
+        
+        let response = await fetch(`${this.ROTA}${path}/${id}`, {
+
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body:JSON.stringify(data)
+
+        })
+     
         return response
 
     }
 
 } 
+
+
+

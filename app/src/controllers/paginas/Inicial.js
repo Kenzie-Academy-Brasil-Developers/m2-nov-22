@@ -1,17 +1,20 @@
-export class Interface {
 
-    static listarClientes(clientes){
-        
+import { Api } from "./../../api/Api.js"
+export class Inicial {
+
+    static async listarClientes(){
+
+        const clientes = await Api.get("/clientes")
+
         clientes.forEach((cliente)=>{
            
             const tagTempalte = this.template(cliente)
             document.querySelector("ul").appendChild(tagTempalte)
 
         })
-
     }
 
-    static template({id,nome,cpf,telefone}){
+    static template({nome,cpf,telefone}){
 
         const li = document.createElement("li")
         li.innerHTML = `
@@ -19,9 +22,7 @@ export class Interface {
             <p>CPF: ${cpf}</p>
             <p>Telefone: ${telefone}</p>
         `
-        
         return li
-
     }
 
 }
