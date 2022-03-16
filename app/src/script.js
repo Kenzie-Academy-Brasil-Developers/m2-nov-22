@@ -1,8 +1,24 @@
+import { User } from "./controllers/User.js";
+import { Post } from "./controllers/Post.js";
 
-import {Inicial} from "./controllers/paginas/Inicial.js"
-import {Api} from "./api/Api.js"
+// const responseRegistro = await User.registrar("/register", {
+//     "username": "hudsonHC",
+//     "email": "hudson@gmail.com",
+//     "avatarUrl": "https://github.com/phmc99.png",
+//     "password": "1234"
+// })
 
-Api.atualizar("/clientes", 1, {nome: "Hudson Carolino", cpf:"10826604943", telefone:"41997117235"})
 
-Inicial.listarClientes()
+const responseRegistro = await User.login("/login", {
+    "email": "hudson@gmail.com",
+    "password": "1234"
+})
 
+// const tokenUser = User.infoUsuario.autenticacao.token
+// Post.registrar({
+//     "content": "Esse é um exemplo de publicação para o blog do M4 Teste."
+// },tokenUser)
+
+
+
+ 
